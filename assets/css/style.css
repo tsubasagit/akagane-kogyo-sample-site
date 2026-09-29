@@ -246,14 +246,17 @@ button { font: inherit; cursor: pointer; }
   position: absolute;
   inset: 0;
   z-index: -2;
+  /* 昼の青空を生かすため、影は文字が読める最低限の薄い紺だけ */
   background:
-    linear-gradient(90deg, rgba(18, 23, 30, .92) 0%, rgba(18, 23, 30, .72) 38%, rgba(18, 23, 30, .18) 70%, rgba(18, 23, 30, .05) 100%),
-    linear-gradient(0deg, rgba(18, 23, 30, .55) 0%, transparent 35%);
+    linear-gradient(90deg, rgba(12, 36, 66, .62) 0%, rgba(12, 36, 66, .42) 38%, rgba(12, 36, 66, .08) 65%, transparent 100%),
+    linear-gradient(0deg, rgba(12, 36, 66, .35) 0%, transparent 30%);
 }
+.hero__title, .hero__lead, .hero__eyebrow { text-shadow: 0 2px 18px rgba(8, 24, 48, .45); }
+.hero .hero__glow { display: none; }   /* 昼の写真では銅色のぼかしが夕方に見えるので出さない */
 @keyframes slowzoom { from { transform: scale(1.08); } to { transform: scale(1); } }
 @media (max-width: 767px) {
   .hero__photo { object-position: 72% 50%; }
-  .hero::before { background: linear-gradient(0deg, rgba(18, 23, 30, .9) 0%, rgba(18, 23, 30, .62) 55%, rgba(18, 23, 30, .4) 100%); }
+  .hero::before { background: linear-gradient(0deg, rgba(12, 36, 66, .78) 0%, rgba(12, 36, 66, .5) 55%, rgba(12, 36, 66, .3) 100%); }
 }
 .hero__pattern {
   position: absolute;
