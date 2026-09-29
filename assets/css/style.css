@@ -410,7 +410,7 @@ button { font: inherit; cursor: pointer; }
 /* ---------- 事業内容カード ---------- */
 .cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 .card {
@@ -441,6 +441,7 @@ button { font: inherit; cursor: pointer; }
   color: var(--slate);
   border: 1px solid var(--line);
 }
+@media (max-width: 960px) { .card { padding: 30px 24px; } }
 @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } .card { padding: 28px 24px; } }
 
 /* ---------- 安全 ---------- */
