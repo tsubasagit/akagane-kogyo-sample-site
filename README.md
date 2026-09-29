@@ -16,6 +16,7 @@ AI（Claude Code）を使った Web 制作の研修で、「このくらいの�
 index.html
 assets/
   css/style.css   デザイン
+  img/            AI 生成の画像（hero / work_* / company / recruit）
   js/main.js      メニュー・スクロール表示・数字のカウント・フォーム（送信はしない）
 ```
 
@@ -27,7 +28,8 @@ GitHub Pages で公開する場合は、リポジトリの Settings → Pages �
 - **あかがね ＝ 銅**。新居浜が銅とともに育った町であることから、銅色（`#B8622B`）を差し色に
 - **足場のグリッド**をモチーフに、ヒーローの背景とロゴマークを作成
 - 見出しは明朝体（Shippori Mincho B1）、本文はゴシック（Noto Sans JP）。職人の会社らしい落ち着きを出す
-- 写真は使わない（サンプルのため）。施工事例は図案で代用
+- 画像6枚（ヒーロー・施工事例3・会社概要・採用）は **ChatGPT の画像生成（Codex の image_gen）で作ったイメージ**。実在の現場・人物ではない。サイト上にも「AI 生成のイメージ」と表示している
+  - `assets/img/` に JPEG で保存（元は 1672×941 などの PNG。サイト用に縮小・圧縮）
 - スマホ対応・キーボード操作・動きを減らす設定（prefers-reduced-motion）に対応
 
 ## 構成

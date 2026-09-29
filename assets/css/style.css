@@ -230,12 +230,37 @@ button { font: inherit; cursor: pointer; }
   overflow: hidden;
   isolation: isolate;
 }
+/* 写真（AI生成）。左側を暗く落として、見出しの白文字を読ませる */
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 40%;
+  z-index: -3;
+  animation: slowzoom 18s ease-out both;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(18, 23, 30, .92) 0%, rgba(18, 23, 30, .72) 38%, rgba(18, 23, 30, .18) 70%, rgba(18, 23, 30, .05) 100%),
+    linear-gradient(0deg, rgba(18, 23, 30, .55) 0%, transparent 35%);
+}
+@keyframes slowzoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+@media (max-width: 767px) {
+  .hero__photo { object-position: 72% 50%; }
+  .hero::before { background: linear-gradient(0deg, rgba(18, 23, 30, .9) 0%, rgba(18, 23, 30, .62) 55%, rgba(18, 23, 30, .4) 100%); }
+}
 .hero__pattern {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  color: rgba(255, 255, 255, .13);
+  color: rgba(255, 255, 255, .06);
   z-index: -1;
   mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.25) 70%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.25) 70%, transparent);
@@ -512,23 +537,18 @@ button { font: inherit; cursor: pointer; }
 .work__visual {
   position: relative;
   aspect-ratio: 4 / 3;
-  display: grid;
-  place-items: center;
-  color: rgba(255, 255, 255, .55);
-  font-family: var(--font-num);
-  font-weight: 600;
-  letter-spacing: .3em;
-  font-size: 13px;
-  background-image:
-    linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
-  background-size: 28px 28px;
+  overflow: hidden;
+  background: var(--steel);
 }
-.work__visual--a { background-color: #2B3A4D; }
-.work__visual--b { background-color: #6B4A2E; }
-.work__visual--c { background-color: #3E4A3A; }
+.work__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--ease);
+}
+.work:hover .work__visual img { transform: scale(1.05); }
 .work__visual::after {
-  content: "SAMPLE";
+  content: "AI IMAGE";
   position: absolute;
   top: 12px; right: 12px;
   font-size: 10px;
@@ -554,6 +574,16 @@ button { font: inherit; cursor: pointer; }
 .company__intro p + p { margin-top: 16px; }
 .company__intro p { color: var(--slate); font-size: 15px; }
 .company__intro .section__title { margin-bottom: 26px; }
+.company__photo { margin: 30px 0 0; }
+.company__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.company__photo figcaption,
+.recruit__visual figcaption { margin-top: 8px; font-size: 12px; color: var(--mist); }
 .company__table {
   width: 100%;
   border-collapse: collapse;
@@ -598,10 +628,18 @@ button { font: inherit; cursor: pointer; }
   border-bottom: 2.5px solid #fff;
   transform: rotate(-45deg);
 }
-.recruit__visual { max-width: 300px; margin-inline: auto; }
+.recruit__visual { margin: 0 0 0 auto; max-width: 420px; width: 100%; }
+.recruit__visual img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
+}
+.recruit__visual figcaption { color: rgba(255, 255, 255, .7); text-align: right; }
 @media (max-width: 900px) {
   .recruit { grid-template-columns: 1fr; }
-  .recruit__visual { display: none; }
+  .recruit__visual { max-width: 420px; }
 }
 
 /* ---------- お問い合わせ ---------- */
